@@ -5,15 +5,18 @@
     <div class = "row">
         <div class="col-md-6">
             <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
-            {{#googleName}}
-                Logged in as: <span id="user">{{googleName}}</span>
+            {{#loginedName}}
+                Logged in as: <span id="user">{{loginedName}}</span>
                 <a href="/logout" class="btn btn-info active" role="button">Logout</a>
-            {{/googleName}}
-            {{^googleName}}
+            {{/loginedName}}
+            {{^loginedName}}
                 <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">
                     Google Login
                 </a>
-            {{/googleName}}
+                <a href="/oauth2/authorization/naver" class="btn btn-success active" role="button">
+                    Naver Login
+                </a>
+            {{/loginedName}}
         </div>
     </div>
     <br>

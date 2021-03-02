@@ -1,9 +1,9 @@
 package com.jjoy.project.springboot.web.dto;
 
+import com.jjoy.project.springboot.config.auth.LoginUser;
 import com.jjoy.project.springboot.config.auth.SessionUser;
 import com.jjoy.project.springboot.service.PostsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,11 +20,10 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts", postsService.findAllDesc());
-        SessionUser user = (SessionUser)httpSession.getAttribute("user");
         if(user != null){
-            model.addAttribute("googleName", user.getName());
+            model.addAttribute("loginedName", user.getName());
         }
         return "index";
     }
