@@ -1,8 +1,9 @@
-package com.jjoy.project.springboot.web.dto;
+package com.jjoy.project.springboot.web;
 
 import com.jjoy.project.springboot.config.auth.LoginUser;
 import com.jjoy.project.springboot.config.auth.SessionUser;
 import com.jjoy.project.springboot.service.PostsService;
+import com.jjoy.project.springboot.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
