@@ -18,9 +18,13 @@ cache:
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r JJoyProject *
-  - mkdir -p deploy
-  - mv JJoyProject.zip deploy/JJoyProject.zip
+  - mkdir -p before-deploy
+  - cp scripts/*.sh before-deploy/
+  - cp appspec.yml before-deploy/
+  - cp build/libs/*.jar before-deploy/
+  - cd before-deploy && zip -r before-deploy * # before-deploy 이동 후 전체 압축
+  - cd ../ && mkdir -p deploy #상위 디렉토리로 이동 후 deploy 디렉토리 생성
+  - mv before-deploy/before-deploy.zip deploy/JJoyProject.zip
 
 deploy:
   - provider: s3
